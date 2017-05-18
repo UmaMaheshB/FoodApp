@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+{% block body %}
+<h1>{% if request.user.is_authenticated %}Login{%else%}Logout{% endif %}</h1>
+		<center>
+			<a style="float: right;" href="#"><button>Add Restaurant/button></a>
+			<table border="2" style="margin-top: 100px;">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Location</th>
+					<th>Email_id</th>
+					<th>Mobile</th>
+				</tr>
+				{% for restaurant in object_list %}
+				<tr>
+					<td><a href="{% url 'app:restaurant-detail' restaurant.id %}">{{restaurant.id}}</a></td>
+					<td>{{restaurant.name}}</td>
+					<td>{{restaurant.location}}</td>
+					<td>{{restaurant.email}}</td>
+					<td>{{restaurant.mobile}}</td>
+					<td><a href="#" ><button>Edit</button></a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</center>
+	
+{% endblock %}

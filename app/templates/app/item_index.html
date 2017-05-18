@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% block body %}
+		<form class="form" method="get" action="{% url 'app:item_search'%}">
+	           <div class="form-group">
+	                   <input type="text" name="item" class="form-control">
+	                   <input type="submit" value="Search" class="btn btn-primary">
+	           </div>
+	   </form>
+		 
+	  {% for item in object_list %}
+<div class="media">
+<div class="media-left">
+<img src="{{ item.image.url }}" class="media-object" style="width:100px">
+</div>
+<div class="media-body">
+<h4 class="media-heading">{{ item.item }}</h4>
+<p>Price: {{ item.price }}</p>
+<p>Restaurant: {{ item.restaurant }}</p>
+</div>
+
+</div>
+<div >
+<a href="" class="btn btn-primary">Order Now</a>
+</div>
+
+<hr>
+
+
+{% endfor %}
+{% endblock %}
